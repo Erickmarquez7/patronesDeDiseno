@@ -30,7 +30,5 @@ public class Mexico{
 		return "Esperamos verte pronto!";
 	}
 	
-
-
 }
 
