@@ -5,6 +5,8 @@ Los ejemplos no necesariamente están relacionados entre sí.
 
 Son solo diferentes situaciones en que se podría aplicar dicho Patrón
 
+Debo añadir diagramas xD
+
 Principios del diseño:
 
 1.- Identificar lo que cambia de lo constante 
