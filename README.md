@@ -14,3 +14,6 @@ Principios del diseño:
 2.- Programar la interfaz o super tipo, no la clase 
 
 3.- Favorecer la composición sobre la herencia
+
+4.- Esforzarse por hacer diseños debilemente acocplados,
+esto da más flexibilidad
