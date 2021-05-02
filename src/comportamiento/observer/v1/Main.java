@@ -14,6 +14,7 @@ public class Main{
         //creamos nuestros observadores y los conectamos con el sujeto
         Subs s = new Subs(y);
         Donador d = new Donador(y);
+        Visitane v = new Visitante(y);
         //4 subs y 100 doges
         y.setSubs(4, 100);
         //7 subs y un dog
