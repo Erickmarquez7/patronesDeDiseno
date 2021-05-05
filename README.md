@@ -1,4 +1,4 @@
-# patronesDeDiseno
+# Patrones de Diseño
 Conocer los distintos patrones de diseño. 
 
 Los ejemplos no necesariamente están relacionados entre sí. 
