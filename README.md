@@ -17,3 +17,6 @@ Principios del diseño:
 
 4.- Esforzarse por hacer diseños debilemente acocplados,
 esto da más flexibilidad
+
+5.- Las clases deben estar abiertas para extender, pero
+cerradas para modificar
