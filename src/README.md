@@ -1,10 +1,13 @@
 ## Tipos de patrones
 
-* Comportamiento
+* Comportamiento: 
   * Estrategy
   * Observer
 
-* Creación
+* Creación: Como su nombre lo indica 
+proporcionan soluciones a posibles
+problemas que podemos tener al
+momento de crear instancias de Clases
   * Singleton 
   * Prototype
   * Factory
