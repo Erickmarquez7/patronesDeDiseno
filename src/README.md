@@ -5,9 +5,9 @@
   * Observer
 
 * Creación
- * Singleton 
- * Prototype
- * Factory
+  * Singleton 
+  * Prototype
+  * Factory
 
 * Estructurales
- * Decorator
+  * Decorator
