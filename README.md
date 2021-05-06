@@ -15,7 +15,7 @@ Principios del diseño:
 
 3.- Favorecer la composición sobre la herencia
 
-4.- Esforzarse por hacer diseños debilemente acocplados,
+4.- Esforzarse por hacer diseños debilemente acoplados,
 esto da más flexibilidad
 
 5.- Las clases deben estar abiertas para extender, pero
