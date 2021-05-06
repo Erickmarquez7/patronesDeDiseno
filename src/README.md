@@ -1,8 +1,8 @@
 ## Tipos de patrones
 
 * Comportamiento
- * Estrategy
- * Observer
+  * Estrategy
+  * Observer
 
 * Creación
  * Singleton 
