@@ -2,7 +2,7 @@
 
 * Comportamiento:
 Similar a _estructurales_ pero más enfocados en
-el comportamiento
+el comportamiento/métodos
 
   * Estrategy
   * Observer
