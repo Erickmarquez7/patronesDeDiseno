@@ -1,1 +1,1 @@
-![UML](/singleton/diagrama.jpg)
+![UML](/diagrama.jpg)
