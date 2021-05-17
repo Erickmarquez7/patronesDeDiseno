@@ -8,9 +8,7 @@ el comportamiento/métodos
   
 * Creación: 
 Como su nombre lo indica, proporcionan soluciones
-a posibles problemas que podemos tener en la 
-
-creación de instancias de Clases, haciendo uso
+a posibles problemas que podemos tener en la creación de instancias de Clases, haciendo uso
 del encapsulamiento
   * Singleton 
   * Prototype
