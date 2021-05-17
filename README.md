@@ -20,3 +20,6 @@ esto da más flexibilidad
 
 5. Las clases deben estar abiertas para extender, pero
 cerradas para modificar
+
+6. Dependa de abstracciones. No hacer
+dependen de clases concretas. 

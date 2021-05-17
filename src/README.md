@@ -3,18 +3,18 @@
 * Comportamiento:
 Similar a _estructurales_ pero más enfocados en
 el comportamiento/métodos
-
   * Estrategy
   * Observer
-
+  
 * Creación: 
 Como su nombre lo indica, proporcionan soluciones
 a posibles problemas que podemos tener en la 
+
 creación de instancias de Clases, haciendo uso
 del encapsulamiento
   * Singleton 
   * Prototype
-  * Factory
+  * Factory Method
 
 * Estructurales:
 Solucionan los problemas de composición entre clases
