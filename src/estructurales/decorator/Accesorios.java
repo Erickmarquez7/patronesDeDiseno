@@ -12,4 +12,6 @@ public abstract class Accesorios extends Carga{
 
     //volvemos el metodo abstracto
     public abstract String getDescripcion();
+    
+    //igual podría ser un metodo bastracto costo();
 }

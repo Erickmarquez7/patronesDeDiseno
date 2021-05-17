@@ -25,6 +25,7 @@ public class Agua extends Accesorios{
     }
 
     public double costo(){
+    	//carga.costo() es el costo del producto en sí
         return 3.00 + carga.costo();
     }
 

@@ -25,6 +25,7 @@ public class Ropa extends Accesorios{
     }
 
     public double costo(){
+        //carga.costo() es el costo del producto en sí
         return 4.99 + carga.costo();
     }
 }

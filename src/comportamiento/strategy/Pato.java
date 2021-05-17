@@ -10,6 +10,8 @@ public abstract class Pato{
     //en este caso el volar y sonido
     ComportamientoVolar cv;
     ComportamientoSonido cs;
+    /*no ponemos implements porque eso nos obligaria a implementar
+    Y no todos tienen la misma implementación, Por eso decimo que TIENE-UN*/
 
     public Pato(){}
 

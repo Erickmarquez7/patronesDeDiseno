@@ -25,6 +25,7 @@ public class Comida extends Accesorios{
     }
 
     public double costo(){
+     	//carga.costo() es el costo del producto en sí
         return 11.50 + carga.costo();
     }
 }

@@ -26,6 +26,8 @@ public class Main{
         System.out.println(bolsa.getDescripcion()+"\nCosto: $"+ df.format(bolsa.costo())+"\n");
 
         System.out.println(bolsa.getClass());
+        
+        //#impuestosxd
 
     }
 }
