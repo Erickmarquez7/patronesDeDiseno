@@ -1,15 +1,14 @@
 ## Tipos de patrones
 
 * Comportamiento:
-Similar a _estructurales_ pero más enfocados en
-el comportamiento/métodos
+Se encargan de una comunicación efectiva y la asignación de responsabilidades entre objetos.
   * Estrategy
   * Observer
   
 * Creación: 
 Como su nombre lo indica, proporcionan soluciones
 a posibles problemas que podemos tener en la creación de instancias de Clases, haciendo uso
-del encapsulamiento
+del encapsulamiento.
   * Singleton 
   * Prototype
   * Factory Method
@@ -17,5 +16,5 @@ del encapsulamiento
 * Estructurales:
 Solucionan los problemas de composición entre clases
 para que puedan trabajar juntos, sin precisamente ser
-dependientes entre sí 
+dependientes entre sí.
   * Decorator

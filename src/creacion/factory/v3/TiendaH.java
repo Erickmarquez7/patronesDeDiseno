@@ -2,7 +2,7 @@
 //patron factory/fabrica
 //Intancia los objetos a través de una fabrica
 //No direcatemente
-//package src.creacion.factory;
+
 public abstract class TiendaH{
 
     /*En esta versión cambiamos la intancia por Herencia
