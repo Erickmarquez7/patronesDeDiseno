@@ -14,5 +14,23 @@ public class Main{
         control.setComando(new PuertaComando(new Puerta()));
         control.ejecuta();
 
+        Xbox casa = new Xbox();
+
+        XboxOn enciende = new XboxOn(casa);
+        control.setComando(enciende);
+        control.ejecuta();
+
+        XboxOff apaga = new XboxOff(casa);
+        control.setComando(apaga);
+        control.ejecuta();
+
+        XboxLeeDisco lee = new XboxLeeDisco(casa);
+        control.setComando(lee);
+        control.ejecuta();
+
+        XboxSacaDisco saca = new XboxSacaDisco(casa);
+        control.setComando(saca);
+        control.ejecuta();
+
     }
 }
