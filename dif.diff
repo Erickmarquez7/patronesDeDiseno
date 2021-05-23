@@ -1,0 +1,372 @@
+diff --git a/src/comportamiento/README.md b/src/comportamiento/README.md
+index 732e4b1..2bf2067 100644
+--- a/src/comportamiento/README.md
++++ b/src/comportamiento/README.md
+@@ -9,3 +9,6 @@ a todos los demas observadores, como un modelo de susbscripciones
+ * Strategy: Encierran algoritmos en una familia de, y se 
+ selecciona uno según el caso
+ 
++* Command: Trata a las peticiones como un objeto y el objeto en sí,
++permitiendo que los parametrices en un "controlador" y que este pueda
++tener multiples parametrizaciones
+diff --git a/src/comportamiento/command/v2/Command.class b/src/comportamiento/command/v2/Command.class
+new file mode 100644
+index 0000000..80da503
+Binary files /dev/null and b/src/comportamiento/command/v2/Command.class differ
+diff --git a/src/comportamiento/command/v2/Command.java b/src/comportamiento/command/v2/Command.java
+new file mode 100644
+index 0000000..dee8445
+--- /dev/null
++++ b/src/comportamiento/command/v2/Command.java
+@@ -0,0 +1,10 @@
++/*patron Command/comando
++Trata a peticiones como objetos para pasarlas
++a un "controlador", de esta manera separa 
++el "qué" del "como"*/
++//interfaz comando que implementan los comandos
++public interface Command{
++
++    public void execute();
++
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/Controlador.class b/src/comportamiento/command/v2/Controlador.class
+new file mode 100644
+index 0000000..1006239
+Binary files /dev/null and b/src/comportamiento/command/v2/Controlador.class differ
+diff --git a/src/comportamiento/command/v2/Controlador.java b/src/comportamiento/command/v2/Controlador.java
+new file mode 100644
+index 0000000..38c599e
+--- /dev/null
++++ b/src/comportamiento/command/v2/Controlador.java
+@@ -0,0 +1,44 @@
++public class Controlador{
++    Command[] encendidos; //tenemos arreglos de comandos
++    Command[] apagados;
++
++    //guardamos el comando a ejecutar
++    public Controlador(){
++        encendidos = new Command[7];
++        apagados = new Command[7];
++
++        Command sin = new SinComando();
++        for (int i = 0; i<7;i++){
++            encendidos[i] = sin;
++            apagados[i] = sin;
++        }
++
++    }
++
++    public void setComando(int pos, Command encendido, Command apagado){
++        encendidos[pos] = encendido;
++        apagados[pos] = apagado;
++    }
++
++    //mandamos a llamar el comando solocitado
++    public void enciendeBoton(int pos){
++        if(encendidos[pos] != null)
++            encendidos[pos].execute();
++    }
++
++    public void apagaBoton(int pos){
++        if(encendidos[pos] != null)
++            apagados[pos].execute();
++    }
++
++    public String toString(){
++        StringBuffer stringBuff = new StringBuffer();
++        stringBuff.append("\n------ Controlador -------\n");
++        for (int i = 0; i < encendidos.length; i++) {
++            stringBuff.append("[Botón " + i + "] " + encendidos[i].getClass().getName()
++            + "     " + apagados[i].getClass().getName() + "\n");
++        }
++    return stringBuff.toString();
++    }
++
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/Luz.class b/src/comportamiento/command/v2/Luz.class
+new file mode 100644
+index 0000000..a9accfd
+Binary files /dev/null and b/src/comportamiento/command/v2/Luz.class differ
+diff --git a/src/comportamiento/command/v2/Luz.java b/src/comportamiento/command/v2/Luz.java
+new file mode 100644
+index 0000000..db1f328
+--- /dev/null
++++ b/src/comportamiento/command/v2/Luz.java
+@@ -0,0 +1,15 @@
++/*patron Command/comando
++Trata a peticiones como objetos para pasarlas
++a un "controlador", de esta manera separa 
++el "qué" del "como"*/
++public class Luz{
++    private boolean prendida;
++
++    public void zuitch(){
++        if(prendida)
++            prendida = false;
++        else
++            prendida = true;
++        System.out.println("La luz ahora está " + (prendida? "prendida": "apagada") );
++    }
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/LuzComando.class b/src/comportamiento/command/v2/LuzComando.class
+new file mode 100644
+index 0000000..aa0e253
+Binary files /dev/null and b/src/comportamiento/command/v2/LuzComando.class differ
+diff --git a/src/comportamiento/command/v2/LuzComando.java b/src/comportamiento/command/v2/LuzComando.java
+new file mode 100644
+index 0000000..6bae9f8
+--- /dev/null
++++ b/src/comportamiento/command/v2/LuzComando.java
+@@ -0,0 +1,20 @@
++/*patron Command/comando
++Trata a peticiones como objetos para pasarlas
++a un "controlador", de esta manera separa 
++el "qué" del "como"*/
++//el comando es tratado como un objeto
++public class LuzComando implements Command{
++    Luz luz;
++    //le pasamos la luz que recibirá el comando
++    public LuzComando(Luz luz){
++        this.luz = luz;
++    }
++
++
++    public void execute(){
++        //implementamos el método de la interfaz
++        //lo que hará el objeto cuando se mande a llamar el método
++        luz.zuitch();
++    }
++
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/Main.class b/src/comportamiento/command/v2/Main.class
+new file mode 100644
+index 0000000..3d02290
+Binary files /dev/null and b/src/comportamiento/command/v2/Main.class differ
+diff --git a/src/comportamiento/command/v2/Main.java b/src/comportamiento/command/v2/Main.java
+new file mode 100644
+index 0000000..d8ab985
+--- /dev/null
++++ b/src/comportamiento/command/v2/Main.java
+@@ -0,0 +1,42 @@
++public class Main{
++
++    public static void main(String [] args){
++        //el controlador
++        Controlador control = new Controlador();
++
++        //creamos los servicios
++        Luz sala = new Luz();
++        Luz cocina = new Luz();
++        Puerta principal = new Puerta();
++        Puerta cuarto = new Puerta();
++        Xbox xbox = new Xbox();
++        Xbox xbox2 = new Xbox();
++
++        //creamos los comandos de luz
++        LuzComando ls = new LuzComando(sala);
++        LuzComando lc = new LuzComando(cocina);
++        //creamos comando de puerta
++        PuertaComando pp = new PuertaComando(principal);
++        PuertaComando pc = new PuertaComando(cuarto);
++        //creamos comandos de xbox
++        XboxOn xe = new XboxOn(xbox);
++        XboxOff xp = new XboxOff(xbox);
++
++        XboxOn x2e = new XboxOn(xbox2);
++        XboxOff x2p = new XboxOff(xbox2);
++        //asignamos botones
++        control.setComando(0, xe, xp);
++        control.setComando(1, x2e, x2p);
++        control.setComando(2, ls, lc);
++        control.setComando(3, pp, pc);
++
++        System.out.println(control);
++
++        control.enciendeBoton(0);
++        control.apagaBoton(1);
++        control.enciendeBoton(2);
++
++        control.enciendeBoton(6);
++
++    }
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/Puerta.class b/src/comportamiento/command/v2/Puerta.class
+new file mode 100644
+index 0000000..490a4bf
+Binary files /dev/null and b/src/comportamiento/command/v2/Puerta.class differ
+diff --git a/src/comportamiento/command/v2/Puerta.java b/src/comportamiento/command/v2/Puerta.java
+new file mode 100644
+index 0000000..b8a486a
+--- /dev/null
++++ b/src/comportamiento/command/v2/Puerta.java
+@@ -0,0 +1,15 @@
++/*patron Command/comando
++Trata a peticiones como objetos para pasarlas
++a un "controlador", de esta manera separa 
++el "qué" del "como"*/
++public class Puerta{
++    private boolean cerrada = true;
++
++    public void cambia(){
++        if(cerrada)
++            cerrada = false;
++        else
++            cerrada = true;
++        System.out.println("La puerta ahora está " + (cerrada? "cerrada": "apagada") );
++    }
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/PuertaComando.class b/src/comportamiento/command/v2/PuertaComando.class
+new file mode 100644
+index 0000000..8cc0a60
+Binary files /dev/null and b/src/comportamiento/command/v2/PuertaComando.class differ
+diff --git a/src/comportamiento/command/v2/PuertaComando.java b/src/comportamiento/command/v2/PuertaComando.java
+new file mode 100644
+index 0000000..17a059e
+--- /dev/null
++++ b/src/comportamiento/command/v2/PuertaComando.java
+@@ -0,0 +1,16 @@
++/*patron Command/comando
++Trata a peticiones como objetos para pasarlas
++a un "controlador", de esta manera separa 
++el "qué" del "como"*/
++//el comando es tratado como un objeto
++public class PuertaComando implements Command{
++    Puerta p; 
++    public PuertaComando(Puerta p){
++        this.p = p;
++    }
++
++    public void execute(){
++        p.cambia();
++    }
++
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/SinComando.class b/src/comportamiento/command/v2/SinComando.class
+new file mode 100644
+index 0000000..a94637e
+Binary files /dev/null and b/src/comportamiento/command/v2/SinComando.class differ
+diff --git a/src/comportamiento/command/v2/SinComando.java b/src/comportamiento/command/v2/SinComando.java
+new file mode 100644
+index 0000000..404b997
+--- /dev/null
++++ b/src/comportamiento/command/v2/SinComando.java
+@@ -0,0 +1,3 @@
++public class SinComando implements Command{
++    @Override public void execute(){}
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/Xbox.class b/src/comportamiento/command/v2/Xbox.class
+new file mode 100644
+index 0000000..3c2b71c
+Binary files /dev/null and b/src/comportamiento/command/v2/Xbox.class differ
+diff --git a/src/comportamiento/command/v2/Xbox.java b/src/comportamiento/command/v2/Xbox.java
+new file mode 100644
+index 0000000..44a2a5e
+--- /dev/null
++++ b/src/comportamiento/command/v2/Xbox.java
+@@ -0,0 +1,41 @@
++/*patron Command/comando
++Trata a peticiones como objetos para pasarlas
++a un "controlador", de esta manera separa 
++el "qué" del "como"*/
++public class Xbox{
++    boolean encendido;
++    boolean disco;
++    static final int ALTO = 3;
++    static final int BAJO = 1;
++    int vol;
++
++    public void prende(){
++        encendido = true;
++        System.out.println("Xbox ahora está encendido");
++    }
++
++    public void apaga(){
++        encendido = false;
++        System.out.println("Xbox ahora está apagado");
++    }
++
++    public void sacaDisco(){
++        disco = false;
++        System.out.println("El disco ha sido expulsado");
++    }
++
++    public void leeDisco(){
++        disco = true;
++        System.out.println("El disco ha sido metido xd");
++    }
++
++    public void subeVoulmen(){
++        vol = ALTO;
++    }
++
++    public void bajaVolumen(){
++        vol = BAJO;
++    }
++
++
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/XboxOff.class b/src/comportamiento/command/v2/XboxOff.class
+new file mode 100644
+index 0000000..af97dd8
+Binary files /dev/null and b/src/comportamiento/command/v2/XboxOff.class differ
+diff --git a/src/comportamiento/command/v2/XboxOff.java b/src/comportamiento/command/v2/XboxOff.java
+new file mode 100644
+index 0000000..9742ee4
+--- /dev/null
++++ b/src/comportamiento/command/v2/XboxOff.java
+@@ -0,0 +1,16 @@
++/*patron Command/comando
++Trata a peticiones como objetos para pasarlas
++a un "controlador", de esta manera separa 
++el "qué" del "como"*/
++public class XboxOff implements Command{
++    Xbox xbox;
++
++    public XboxOff(Xbox xbox){
++        this.xbox = xbox;
++    }
++
++    public void execute(){
++        xbox.apaga();
++
++    }
++}
+\ No newline at end of file
+diff --git a/src/comportamiento/command/v2/XboxOn.class b/src/comportamiento/command/v2/XboxOn.class
+new file mode 100644
+index 0000000..c0b2303
+Binary files /dev/null and b/src/comportamiento/command/v2/XboxOn.class differ
+diff --git a/src/comportamiento/command/v2/XboxOn.java b/src/comportamiento/command/v2/XboxOn.java
+new file mode 100644
+index 0000000..53c68fc
+--- /dev/null
++++ b/src/comportamiento/command/v2/XboxOn.java
+@@ -0,0 +1,18 @@
++/*patron Command/comando
++Trata a peticiones como objetos para pasarlas
++a un "controlador", de esta manera separa 
++el "qué" del "como"*/
++public class XboxOn implements Command{
++    Xbox xbox;
++
++    public XboxOn(Xbox xbox){
++        this.xbox = xbox;
++    }
++
++    public void execute(){
++        xbox.prende();
++        xbox.leeDisco();
++        xbox.subeVoulmen();
++
++    }
++}
+\ No newline at end of file
