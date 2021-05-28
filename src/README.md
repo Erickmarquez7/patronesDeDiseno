@@ -18,3 +18,4 @@ Solucionan los problemas de composición entre clases
 para que puedan trabajar juntos, sin precisamente ser
 dependientes entre sí.
   * Decorator
+  * Adapter
