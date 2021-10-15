@@ -2,9 +2,11 @@
 
 * Comportamiento:
 Se encargan de una comunicación efectiva y la asignación de responsabilidades entre objetos.
-  * Estrategy
-  * Observer
-  
+  * Command
+  * Observer 
+  * State 
+  * Strategy
+
 * Creación: 
 Como su nombre lo indica, proporcionan soluciones
 a posibles problemas que podemos tener en la creación de instancias de Clases, haciendo uso
